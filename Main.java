@@ -6,12 +6,6 @@ public class Main {
     while (true){
     System.out.println("1. Choinka ");
     System.out.println("2. Zamiana tekstu");
-    System.out.println("3.  ");
-    System.out.println("4.  ");
-    System.out.println("5.  ");
-    System.out.println("6.  ");
-    System.out.println("7.  ");
-    System.out.println("8.  ");
     wybor = s.nextInt();
     switch (wybor) {
       case 1:
@@ -19,21 +13,6 @@ public class Main {
         break;
       case 2:
         tekst();
-        break;
-      case 3:
-        
-        break;
-      case 4:
-        
-        break;
-      case 5:
-        
-        break;
-      case 6:
-        
-        break;
-      case 7:
-        
         break;
       default: 
         System.out.println("Brak opcji");
@@ -63,25 +42,28 @@ public class Main {
   }
 
   public static void tekst() {
-  Scanner in = new Scanner(System.in);
-  System.out.println("Podaj tekst: "); 
-  String txt = in.nextLine();
-  int dl = txt.length();
-  char[] tekst = txt.toCharArray();
-  int zmiany=0;
-  for(int i=0;i<dl;i++){
-    if(Character.isUpperCase(tekst[i])){
-      tekst[i]=Character.ToLowerCase();
-      zmiany++;
-      }
-    else if(Character.isLowerCase(tekst[i])){
-      tekst[i]=Character.ToUpperCase();
-      zmiany++;
-      }
+  Scanner st = new Scanner(System.in);
+  System.out.print("Podaj tekst: ");
+  String txt= st.nextLine(), gotowy=""; 
+  char tmp;
+  int asc, p=0;
+  for (int i=0 ; i<txt.length(); i++){
+      tmp=txt.charAt(i);
+      asc=(int)tmp;
+        if (asc>=97 && asc<=122){
+          asc=asc-32;
+          tmp=(char)asc;
+          p++;
+        }
+        else
+        if(asc>=65 && asc<=90){
+          asc = asc + 32;
+          tmp = (char)asc;
+          p++;
+          }
+        gotowy=gotowy+tmp;
   }
-  for(int j=0;j<dl;j++){
-   System.out.print(tekst[j]);          
+  System.out.println("Po zamianie: "+gotowy);
+  System.out.println("Zamian: "+p);
   }
-  System.out.println("Zmiany: "+zmiany);
- }
 }
